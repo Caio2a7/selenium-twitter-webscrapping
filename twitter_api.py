@@ -156,8 +156,8 @@ class TwitterScraper:
 
     def send_email(self):
         endereco_remetente = 'senDERemai2@outlook.com'
-        senha_remetente = "Senderemailbot4"
-        endereco_destinatario = 'caiodanielfonseca@gmail.com'
+        senha_remetente = ""
+        endereco_destinatario = ''
 
         # Crie o objeto do email
         msg = MIMEMultipart()

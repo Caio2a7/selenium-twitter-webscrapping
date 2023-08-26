@@ -46,3 +46,4 @@ class ScrapRegex:
                               'Likes': tweets_number_info['Likes'],
                               'Views': tweets_number_info['Views'],
                               'Text': tweets_text_info})
+            return self.data
