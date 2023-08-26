@@ -12,7 +12,7 @@ from time import sleep
 import re
 
 
-class TwitterApi:
+class TwitterScraper:
 
     def __init__(self, browser_name: str, email: str, password: str, user: str):
         self.browser_name = browser_name
@@ -66,10 +66,10 @@ class TwitterApi:
         driver.find_element(By.NAME, 'text').send_keys(self.email)
         driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]'
                                       '/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]').click()
-        sleep(2)
+        sleep(3)
         driver.find_element(By.CSS_SELECTOR, '[data-testid="ocfEnterTextTextInput"]').send_keys(self.user)
         driver.find_element(By.CSS_SELECTOR, '[data-testid="ocfEnterTextNextButton"]').click()
-        sleep(2)
+        sleep(3)
         driver.find_element(By.NAME, 'password').send_keys(self.password)
         driver.find_element(By.CSS_SELECTOR, '[data-testid="LoginForm_Login_Button"]').click()
         sleep(5)
@@ -140,7 +140,7 @@ class TwitterApi:
         df.to_excel('twitter_scrap.xlsx', index=False)
 
     def email_usuario(self):
-
+        print('OKUSUERE')
         self.email = input(
             'Digite o email para receber o relatorio de valores dos celulares!\n')
         self.email.lower()
@@ -156,7 +156,7 @@ class TwitterApi:
 
     def send_email(self):
         endereco_remetente = 'senDERemai2@outlook.com'
-        senha_remetente = ""
+        senha_remetente = "Senderemailbot4"
         endereco_destinatario = 'caiodanielfonseca@gmail.com'
 
         # Crie o objeto do email
@@ -180,12 +180,14 @@ class TwitterApi:
         server.quit()
 
 
-Setup = TwitterApi()
+Setup = TwitterScraper()
 Setup.__add__(50, 'ele', 'Livro')
 Driver = Setup.driver_set_browser(Setup.set_up_options())
 Setup.driver_logging(Driver)
 scrap_list = Setup.scrap_tweets_timeline(Driver)
+
 Scrap_info = Setup.scrap_filter(scrap_list)
 Setup.organize_scrap_infos(Scrap_info)
+
 Setup.create_excel()
 Setup.send_email()
