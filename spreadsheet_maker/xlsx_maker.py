@@ -4,10 +4,9 @@ import pandas as pd
 
 class SpreadSheet:
 
-    def __init__(self):
-        pass
+    def __init__(self, data):
+        self.data = data
 
-    @staticmethod
-    def create_excel(data):
-        df = pd.DataFrame(data)
+    def create_excel(self):
+        df = pd.DataFrame(self.data)
         df.to_excel('twitter_scrap.xlsx', index=False)
