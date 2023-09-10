@@ -51,11 +51,16 @@ class DriverSetup:
         sleep(4)
         driver.find_element(By.NAME, 'text').send_keys(self.email)
         driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]'
-                                      '/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]').click()
+                                          '/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]').click()
         sleep(3)
-        driver.find_element(By.CSS_SELECTOR, '[data-testid="ocfEnterTextTextInput"]').send_keys(self.user)
-        driver.find_element(By.CSS_SELECTOR, '[data-testid="ocfEnterTextNextButton"]').click()
-        sleep(3)
-        driver.find_element(By.NAME, 'password').send_keys(self.password)
-        driver.find_element(By.CSS_SELECTOR, '[data-testid="LoginForm_Login_Button"]').click()
-        sleep(5)
+        while True:
+            try:
+                driver.find_element(By.CSS_SELECTOR, '[data-testid="ocfEnterTextTextInput"]').send_keys(self.user)
+                driver.find_element(By.CSS_SELECTOR, '[data-testid="ocfEnterTextNextButton"]').click()
+                sleep(3)
+                driver.find_element(By.NAME, 'password').send_keys(self.password)
+                driver.find_element(By.CSS_SELECTOR, '[data-testid="LoginForm_Login_Button"]').click()
+                sleep(5)
+                break
+            except Exception:
+                pass
