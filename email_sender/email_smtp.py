@@ -21,7 +21,7 @@ class EmailSender:
 
     def send_email(self):
         endereco_remetente = 'senDERemai2@outlook.com'
-        senha_remetente = ""
+        senha_remetente = "Sua senha"
 
         msg = MIMEMultipart()
         msg['From'] = endereco_remetente
